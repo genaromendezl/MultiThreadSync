@@ -6,10 +6,10 @@
 package edu.itver.topicos.multithreadsync;
 
 class PrintDemo {
-   public void printCount(){
+   public void printCount(String name){
     try {
-         for(int i = 50; i > 0; i--) {
-            System.out.println("Contador   ---   "  + i );
+         for(int i = 500; i > 0; i--) {
+            System.out.println("Contador "+name+"  ---   "  + i );
          }
      } catch (Exception e) {
          System.out.println("Thread  interrumpido.");
@@ -28,7 +28,7 @@ class ThreadDemo extends Thread {
         PD = pd;
    }
    public void run() {
-     PD.printCount();
+     PD.printCount(threadName);
      System.out.println("Thread " +  threadName + " terminando.");
    }
 
