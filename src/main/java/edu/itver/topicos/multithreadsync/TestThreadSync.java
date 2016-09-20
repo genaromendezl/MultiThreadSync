@@ -10,6 +10,7 @@ class PrintDemoS {
     try {
          for(int i = 500; i > 0; i--) {
             System.out.println("Counter "+name+"  ---   "  + i );
+            Thread.sleep(300);
          }
      } catch (Exception e) {
          System.out.println("Thread  interrupted.");
@@ -21,12 +22,14 @@ class PrintDemoS {
 class ThreadDemoS extends Thread {
    private Thread t;
    private String threadName;
-   PrintDemo  PD;
+   PrintDemoS  PD;
+   int x = 500;
 
-   ThreadDemoS( String name,  PrintDemo pd){
+   ThreadDemoS( String name,  PrintDemoS pd){
        threadName = name;
        PD = pd;
    }
+   @Override
    public void run() {
      synchronized(PD) {
         PD.printCount(threadName);
@@ -49,10 +52,11 @@ class ThreadDemoS extends Thread {
 public class TestThreadSync {
    public static void main(String args[]) {
 
-      PrintDemo PD = new PrintDemo();
+      System.out.println("Iniciando procesos sincronizados ");
+      PrintDemoS PD = new PrintDemoS();
 
-      ThreadDemo T1 = new ThreadDemo( "Thread - 1 ", PD );
-      ThreadDemo T2 = new ThreadDemo( "Thread - 2 ", PD );
+      ThreadDemoS T1 = new ThreadDemoS( "Thread - 1 ", PD );
+      ThreadDemoS T2 = new ThreadDemoS( "Thread - 2 ", PD );
 
       T1.start();
       T2.start();

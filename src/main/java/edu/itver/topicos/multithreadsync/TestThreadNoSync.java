@@ -8,8 +8,9 @@ package edu.itver.topicos.multithreadsync;
 class PrintDemo {
    public void printCount(String name){
     try {
-         for(int i = 500; i > 0; i--) {
+         for(int i = 300; i > 0; i--) {
             System.out.println("Contador "+name+"  ---   "  + i );
+            Thread.sleep(100);            
          }
      } catch (Exception e) {
          System.out.println("Thread  interrumpido.");
@@ -57,8 +58,8 @@ public class TestThreadNoSync {
 
       // wait for threads to end
       try {
-         T1.join();
-         T2.join();
+         //T1.join();
+         //T2.join();
       } catch( Exception e) {
          System.out.println("Interrumpido.");
       }
